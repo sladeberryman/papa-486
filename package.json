@@ -1,7 +1,7 @@
 {
-  "name": "papa-486",
+  "name": "solid-fishstick-snowcats",
   "version": "1.0.0",
-  "description": "PAPA lab for CIS-486",
+  "description": "Dr. Cumbie (yet again) re-staring a class repo for CIS 486 Spring '24",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -14,6 +14,7 @@
     "dotenv": "^16.4.4",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "install": "^0.13.0",
     "mongodb": "^6.3.0",
     "node": "^21.6.1",
     "nodemon": "^3.0.3"

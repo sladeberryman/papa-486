@@ -11,11 +11,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 // use res.render to load up an ejs view file
 
-let myTypeServer = "this is a secret message (from app.js)";
+let myTypeServer = "Type 1: Reformer";
 
-
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// make MongoClient with MongoClientOptions object 
 const client = new MongoClient(process.env.URI, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -29,35 +27,35 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    const result = await client.db("papa-database").collection("papa-collection").find().toArray();
+
+    console.log("papa-database result: ", result);
+
+    return result;
+
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
-run().catch(console.dir);
 
+app.get('/', async (req,res) => {
 
-
-app.get('/', function(req, res) {
-
+  let dbResult = await run();
+  console.log("myResults:", dbResult[0].userName);
   res.render('index', {
-   
-    myTypeClient: myTypeServer 
+    myTypeClient: myTypeServer,
+    myView: dbResult
 
   });
-  
+
 });
 
-
 app.get('/send', function (req, res) {
-  
-    res.send('Hop on the polar <em>Express</em> <br><a href="/">home</a>')
+    res.send('Hello from the (polar) <em>Express</em><br><a href="/">take me home Tom Hanks</a>')
 })
 
-// app.listen(3000)
-
 app.listen(port, () => {
-  console.log(`PAPA app listening on port ${port}`)
+  console.log(`PAPA is listening on port ${port}`)
 })

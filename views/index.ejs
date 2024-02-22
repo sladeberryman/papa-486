@@ -1,8 +1,14 @@
-<h1>Yo it's EJS.</h1>
-<h2>My name is Slade Berryman</h2>
-<p>Check this out: <%= myTypeClient %>.</p>
-<footer>
-    <p>This was sent from a file on my node server...</p>
-    <a href="/send">send</a><br>
-    <a href="https://github.com/sladeberryman/papa-486" target="_blank">See the Source Code</a>
+
+
+<h1>Yo world, it's EJS.</h1>
+
+<p>I am Me.</p>
+<p>Look at some facts about Me:</p>
+<li>My name is not actually Me, it's <%= myView[0].userName %> </li>
+<li>I am a <%= myTypeClient %>. Yes I pay attention to details, sometimes too much...</li>
+<li>The best show ever is <%= myView[0].tvShows %></li>
+
+<footer> This came from my MongoDB!
+    <a href="/send">send it</a> or 
+    <a href="https://github.com/sladeberryman/papa-486" target="_blank"> Source Code</a>
 </footer>
